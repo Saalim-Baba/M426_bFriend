@@ -7,8 +7,23 @@
       "username": "johndoe123",
       "password": "password123",
       "status": "passive",
-      "activationDate": null,
-      "messages": []
+      "admin": "false",
+      "activationDate": "2024-05-29T11:59:55.085Z",
+      "messages": [
+        {
+          "text": "Welcome! Messaging is now activated.",
+          "timestamp": "2024-05-29T11:59:55.085Z"
+        }
+      ],
+      "paymentData": [
+        {
+          "cardNumber": "9320 3278 9832 2877",
+          "ValidThru": "12/25",
+          "CCV": "787",
+          "IBAN": "CH54 0928 8352 4790 5000 0",
+          "currency": "Chf"
+        }
+      ]
     },
     {
       "customerId": "cust002",
@@ -17,8 +32,27 @@
       "username": "janesmith456",
       "password": "password456",
       "status": "passive",
-      "activationDate": null,
-      "messages": []
+      "admin": "false",
+      "activationDate": "2024-05-29T12:00:34.971Z",
+      "messages": [
+        {
+          "text": "Welcome! Messaging is now activated.",
+          "timestamp": "2024-05-29T12:00:25.964Z"
+        },
+        {
+          "text": "Welcome! Messaging is now activated.",
+          "timestamp": "2024-05-29T12:00:34.971Z"
+        }
+      ],
+      "paymentData": [
+        {
+          "cardNumber": "4916 5847 2109 1756",
+          "ValidThru": "11/24",
+          "CCV": "452",
+          "IBAN": "DE89 3704 0044 0532 0130 00",
+          "currency": "Eur"
+        }
+        ]
     },
     {
       "customerId": "cust003",
@@ -27,8 +61,18 @@
       "username": "alicejohnson789",
       "password": "password789",
       "status": "passive",
+      "admin": "true",
       "activationDate": null,
-      "messages": []
+      "messages": [],
+      "paymentData": [
+        {
+          "cardNumber": "5500 9000 0000 0004",
+          "ValidThru": "09/26",
+          "CCV": "123",
+          "IBAN": "GB29 NWBK 6016 1331 9268 19",
+          "currency": "GBP"
+        }
+      ]
     }
   ]
 }
