@@ -1,5 +1,7 @@
 const fs = require('fs');
-
+const express = require('express');
+const app = express();
+const port = 4000;
 // Read customer data from JSON file
 const customerData = JSON.parse(fs.readFileSync('tmp_customer_data.json', 'utf-8'));
 
