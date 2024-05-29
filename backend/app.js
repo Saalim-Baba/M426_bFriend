@@ -5,23 +5,23 @@ const data = require('./tmp_customer_data.json')
 
 app.use(express.json());
 
-const filePath = 'tmp_customer_data.json';
+const dataPath = 'tmp_customer_data.json';
 
 // Read customer data from JSON file
-let customerData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+let customerData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 // Endpoint to change user status
 app.post('/change-status', (req, res) => {
     const { customerId, paymentConfirmation } = req.body;
 
-    // Find the user by customerId
+    // Find user by customerId
     const user = customerData.customers.find(customer => customer.customerId === customerId);
 
     if (!user) {
         return res.status(404).json({ error: 'User not found' });
     }
 
-    // Validate payment status here (assuming paymentConfirmation is a boolean for simplicity)
+    // Validate payment status here
     if (!paymentConfirmation) {
         return res.status(400).json({ error: 'Payment not confirmed' });
     }
@@ -33,26 +33,34 @@ app.post('/change-status', (req, res) => {
     activateMessaging(user);
 
     // Save the updated customer data back to the file
-    fs.writeFileSync(filePath, JSON.stringify(customerData, null, 2), 'utf-8');
+    fs.writeFileSync(dataPath, JSON.stringify(customerData, null, 2), 'utf-8');
 
     return res.status(200).json({ message: 'User status changed successfully', user });
 });
-app.put("/payment-data", (req, res) =>{
+app.put('/update-payment', (req, res) => {
     const { customerId, paymentData } = req.body;
+
+    // Find the user by customerId
     const user = customerData.customers.find(customer => customer.customerId === customerId);
 
     if (!user) {
         return res.status(404).json({ error: 'User not found' });
     }
 
+    // Validate payment data
     if (!paymentData || !paymentData.cardNumber || !paymentData.ValidThru || !paymentData.CCV || !paymentData.IBAN || !paymentData.currency) {
-        return res.status(400).json({ error: 'Invalid payment data, please try again.' });
+        return res.status(400).json({ error: 'Invalid payment data' });
     }
+
+    // Update user's payment data
     user.paymentData = paymentData;
-} )
-// Function to activate messaging
+
+    // Save the updated customer data back to the file (temporarily
+    fs.writeFileSync(dataPath, JSON.stringify(customerData, null, 2), 'utf-8');
+
+    return res.status(200).json({ message: 'Payment data updated successfully', user });
+});
 function activateMessaging(user) {
-    // Code to activate messaging for the user
     // For simplicity, we just add a welcome message
     user.messages.push({ text: 'Welcome! Messaging is now activated.', timestamp: new Date().toISOString() });
 }
