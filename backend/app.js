@@ -1,9 +1,12 @@
 const express = require('express');
 const fs = require('fs');
+const bodyParser = require('body-parser')
 const app = express();
 const data = require('./tmp_customer_data.json')
 
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 const dataPath = 'tmp_customer_data.json';
 
@@ -78,6 +81,16 @@ app.get('/login', (req, res) => {
     }
     res.sendStatus(404)
 })
+
+app.post('/register', (req, res) => {
+    let newData = req.body;
+    console.log("Received data:", newData);
+    if (Object.keys(newData).length === 0) {
+        console.error("No data received. Make sure the Content-Type is set to application/json");
+        return res.status(400).json({ error: "No data received" });
+    }
+    res.send(newData);
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
