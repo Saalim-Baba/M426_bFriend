@@ -6,6 +6,8 @@
       "lastName": "Doe",
       "username": "johndoe123",
       "password": "password123",
+      "status": "passive",
+      "activationDate": null,
       "messages": []
     },
     {
@@ -14,6 +16,8 @@
       "lastName": "Smith",
       "username": "janesmith456",
       "password": "password456",
+      "status": "passive",
+      "activationDate": null,
       "messages": []
     },
     {
@@ -22,6 +26,8 @@
       "lastName": "Johnson",
       "username": "alicejohnson789",
       "password": "password789",
+      "status": "passive",
+      "activationDate": null,
       "messages": []
     }
   ]
