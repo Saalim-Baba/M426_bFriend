@@ -30,7 +30,6 @@ app.post('/change-status', (req, res) => {
     user.status = 'active';
     user.activationDate = new Date().toISOString();
 
-    // Activate messaging
     activateMessaging(user);
 
     // Save the updated customer data back to the file
@@ -38,7 +37,19 @@ app.post('/change-status', (req, res) => {
 
     return res.status(200).json({ message: 'User status changed successfully', user });
 });
+app.put("/payment-data", (req, res) =>{
+    const { customerId, paymentData } = req.body;
+    const user = customerData.customers.find(customer => customer.customerId === customerId);
 
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+
+    if (!paymentData || !paymentData.cardNumber || !paymentData.ValidThru || !paymentData.CCV || !paymentData.IBAN || !paymentData.currency) {
+        return res.status(400).json({ error: 'Invalid payment data, please try again.' });
+    }
+    user.paymentData = paymentData;
+} )
 // Function to activate messaging
 function activateMessaging(user) {
     // Code to activate messaging for the user
