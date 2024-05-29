@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
+const data = require('./tmp_customer_data.json')
 
 app.use(express.json());
 
@@ -52,6 +53,10 @@ function activateMessaging(user) {
     // For simplicity, we just add a welcome message
     user.messages.push({ text: 'Welcome! Messaging is now activated.', timestamp: new Date().toISOString() });
 }
+
+app.get('/admin-app', (req, res) => {
+    res.send(data)
+})
 
 // Start the server
 const PORT = process.env.PORT || 3000;
