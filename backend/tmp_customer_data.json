@@ -7,8 +7,14 @@
       "username": "johndoe123",
       "password": "password123",
       "status": "passive",
-      "activationDate": null,
-      "messages": []
+      "admin": "false",
+      "activationDate": "2024-05-29T11:59:55.085Z",
+      "messages": [
+        {
+          "text": "Welcome! Messaging is now activated.",
+          "timestamp": "2024-05-29T11:59:55.085Z"
+        }
+      ]
     },
     {
       "customerId": "cust002",
@@ -17,8 +23,18 @@
       "username": "janesmith456",
       "password": "password456",
       "status": "passive",
-      "activationDate": null,
-      "messages": []
+      "admin": "false",
+      "activationDate": "2024-05-29T12:00:34.971Z",
+      "messages": [
+        {
+          "text": "Welcome! Messaging is now activated.",
+          "timestamp": "2024-05-29T12:00:25.964Z"
+        },
+        {
+          "text": "Welcome! Messaging is now activated.",
+          "timestamp": "2024-05-29T12:00:34.971Z"
+        }
+      ]
     },
     {
       "customerId": "cust003",
@@ -27,6 +43,7 @@
       "username": "alicejohnson789",
       "password": "password789",
       "status": "passive",
+      "admin": "true",
       "activationDate": null,
       "messages": []
     }

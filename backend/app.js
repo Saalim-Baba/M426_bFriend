@@ -28,8 +28,6 @@ app.post('/change-status', (req, res) => {
     // Update user status and profile
     user.status = 'active';
     user.activationDate = new Date().toISOString();
-    user.firstName = anonymizeText(user.firstName);
-    user.lastName = anonymizeText(user.lastName);
 
     // Activate messaging
     activateMessaging(user);
@@ -39,12 +37,6 @@ app.post('/change-status', (req, res) => {
 
     return res.status(200).json({ message: 'User status changed successfully', user });
 });
-
-// Function to anonymize text
-function anonymizeText(text) {
-    // Example anonymization: replace each character with '*'
-    return text.replace(/./g, '*');
-}
 
 // Function to activate messaging
 function activateMessaging(user) {
