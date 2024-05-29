@@ -28,7 +28,7 @@ In der Pilotphase soll ein Prototyp erstellt werden, um die Machbarkeit des Proj
 
 ### Technologie-Stack
 
-Wir haben uns entschieden, eine PHP-Webapplikation mit dem Laravel-Framework zu entwickeln. Diese Technologie bietet uns die notwendige Flexibilität und Skalierbarkeit für unser Projekt.
+Wir haben uns entschieden, eine Javascript-Webapplikation mit dem React-Framework zu entwickeln. Diese Technologie bietet uns die notwendige Flexibilität und Skalierbarkeit für unser Projekt.
 
 - **Database:** MariaDB
 - **Frontend:** ReactJS & Tailwind CSS
