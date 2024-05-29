@@ -58,6 +58,16 @@ app.get('/admin-app', (req, res) => {
     res.send(data)
 })
 
+app.get('/login', (req, res) => {
+    let username = req.query.username
+    let password = req.query.password
+    let customer = data["customers"].find((customer) => customer.username === username)
+    if (password === customer["password"]) {
+        return res.send(customer).status(200)
+    }
+    res.sendStatus(404)
+})
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
