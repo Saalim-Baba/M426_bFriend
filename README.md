@@ -23,12 +23,10 @@ In der Pilotphase soll ein Prototyp erstellt werden, um die Machbarkeit des Proj
 ### Projektorganisation
 
 - **SCRUM Setup:** Es wird ein SCRUM-Setup organisiert mit einem ScrumMaster (SM) und Team-Mates. Unsere Lehrpersonen agieren als ProductOwner (PO) bzw. Stakeholder.
-- **Kommunikation:** Kommunikation und Transparenz sind essentielle Bestandteile des Projekts. Die Kommunikation erfolgt über Kanäle wie Mailinglisten, Chats und Videocalls.
-- **Technologie:** Das Projekt wird mit einer etablierten Architektur (MVC, n-Tier) umgesetzt. Die Applikation wird auf einem Server gehostet, und alle Teammitglieder haben bereits Erfahrung mit der gewählten Technologie.
+- **Kommunikation:** Kommunikation und Transparenz sind essentielle Bestandteile des Projekts. Die Kommunikation erfolgt über Kanäle wie Mailinglisten, Chats, Besprechungen und Videocalls.
+
 
 ### Technologie-Stack
-
-Wir haben uns entschieden, eine PHP-Webapplikation mit dem Laravel-Framework zu entwickeln. Diese Technologie bietet uns die notwendige Flexibilität und Skalierbarkeit für unser Projekt.
 
 - **Database:** MariaDB
 - **Frontend:** ReactJS & Tailwind CSS
