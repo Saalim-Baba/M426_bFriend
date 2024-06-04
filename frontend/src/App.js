@@ -10,7 +10,7 @@ export default function App() {
                 </div>
                 <div className="flex flex-col justify-end h-full">
 
-                    <div className="flex m-3 border">
+                    <div className="flex m-3">
                         <div className="mx-3">
                             <img
                                 alt="retard user"
@@ -23,7 +23,7 @@ export default function App() {
                         </div>
                     </div>
 
-                    <div className="flex justify-between m-3 border">
+                    <div className="flex justify-between m-3">
                         <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l">
                             Reject
                         </button>
