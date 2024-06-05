@@ -23,7 +23,6 @@ function Cards(){
                             />
                         </div>
                         <div className="text-left text-sm">
-
                             I like to bombastic the rizz out of people #brainrot #fortnitehater #boobies
                         </div>
                     </div>
