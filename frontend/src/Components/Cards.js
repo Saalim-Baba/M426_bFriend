@@ -19,10 +19,10 @@ function Cards(){
                             <img
                                 alt="retard user"
                                 src="/11c7a56403bb2371acfa14a797b14571.webp"
-                                className="rounded-full w-12"
+                                className="rounded-full w-20"
                             />
                         </div>
-                        <div className="">
+                        <div className="text-left text-sm">
                             I like to bombastic the rizz out of people #brainrot #fortnitehater #boobies
                         </div>
                     </div>
