@@ -4,11 +4,15 @@ import './App.css';
 export default function App() {
     return (
         <div className="flex items-center justify-center h-screen" >
-            <div className="flex flex-col w-full max-w-md mx-auto bg-white rounded-lg shadow-lg" style={{ height: '75%' }}>
-                <div>
-                    Bild
+            <div className="flex flex-col w-full max-w-md mx-auto bg-white rounded-lg shadow-lg relative" style={{ height: '75%' }}>
+                <div className="absolute z-0">
+                    <img
+                        alt="retard photo"
+                        src="/F6IUTJM.png"
+                        className="h-auto rounded-lg"
+                    />
                 </div>
-                <div className="flex flex-col justify-end h-full">
+                <div className="flex flex-col justify-end h-full z-10">
 
                     <div className="flex m-3">
                         <div className="mx-3">
@@ -18,7 +22,7 @@ export default function App() {
                                 className="rounded-full w-12"
                             />
                         </div>
-                        <div>
+                        <div className="">
                             I like to bombastic the rizz out of people #brainrot #fortnitehater
                         </div>
                     </div>
