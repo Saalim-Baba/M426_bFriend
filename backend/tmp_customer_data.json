@@ -1,0 +1,62 @@
+{
+  "customers": [
+    {
+      "customerId": "cust001",
+      "firstName": "John",
+      "lastName": "Doe",
+      "username": "johndoe123",
+      "password": "password123",
+      "status": "passive",
+      "admin": "false",
+      "activationDate": "2024-05-29T11:59:55.085Z",
+      "mode": "active",
+      "paymentData": [
+        {
+          "cardNumber": "9320 3278 9832 2877",
+          "ValidThru": "12/25",
+          "CCV": "787",
+          "currency": "Chf"
+        }
+      ]
+    },
+    {
+      "customerId": "cust002",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "username": "janesmith456",
+      "password": "password456",
+      "status": "passive",
+      "admin": "false",
+      "activationDate": "2024-05-29T12:00:34.971Z",
+      "expirationDate": "2025-05-29T12:00:34.971Z",
+      "paymentData": [
+        {
+          "cardNumber": "4916 5847 2109 1756",
+          "validThru": "11/24",
+          "CCV": "452",
+          "name": "Jane Smith"
+        }
+      ]
+    },
+    {
+      "customerId": "cust003",
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "username": "alicejohnson789",
+      "password": "password789",
+      "status": "passive",
+      "admin": "true",
+      "activationDate": null,
+      "messages": [],
+      "paymentData": [
+        {
+          "cardNumber": "5500 9000 0000 0004",
+          "ValidThru": "09/26",
+          "CCV": "123",
+          "IBAN": "GB29 NWBK 6016 1331 9268 19",
+          "currency": "GBP"
+        }
+      ]
+    }
+  ]
+}
