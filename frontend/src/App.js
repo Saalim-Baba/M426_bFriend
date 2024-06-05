@@ -23,7 +23,7 @@ export default function App() {
                             />
                         </div>
                         <div className="">
-                            I like to bombastic the rizz out of people #brainrot #fortnitehater
+                            I like to bombastic the rizz out of people #brainrot #fortnitehater #boobies
                         </div>
                     </div>
 
