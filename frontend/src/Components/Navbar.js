@@ -6,7 +6,7 @@ function paid(){
     let paid = false
     if (paid){
         return(
-          <div className="flex items-center lg:order-1">
+          <div className="flex items-center">
         <Link to="/message" className="text-white hover:text-gray-400 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 lg:mr-3">
             Message
         </Link>
@@ -14,7 +14,7 @@ function paid(){
         )
     } else{
         return(
-            <div className="flex items-center lg:order-1">
+            <div className="flex items-center">
                 <Link to="/pay" className="text-white hover:text-gray-400 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 lg:mr-3">
                     Pay
                 </Link>
@@ -28,7 +28,7 @@ function login(){
     if (loggedIn){
         return(
             <Link to="/" className="flex items-center">
-                <img src="/11c7a56403bb2371acfa14a797b14571.webp" className="h-20 mr-3 sm:h-9 rounded-full" alt="user"/>
+                <img src="/11c7a56403bb2371acfa14a797b14571.webp" className="h-9 mr-3 sm:h-9 rounded-full" alt="user"/>
                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Welcome User</span>
             </Link>
         )
