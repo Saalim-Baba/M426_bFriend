@@ -3,7 +3,7 @@ USE bFriend_DB;
 -- Insert test data into Mode table
 INSERT INTO Mode (`Definition`) VALUES 
 ('Active Mode'),
-('Passicve Mode');
+('Passive Mode');
 
 -- Insert test data into Interests table
 INSERT INTO Interests (`Name`, `Description`) VALUES 
