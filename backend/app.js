@@ -3,6 +3,15 @@ const fs = require('fs');
 const bodyParser = require('body-parser')
 const app = express();
 const data = require('./tmp_customer_data.json')
+const mariadb = require('mariadb');
+
+const pool = mariadb.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: '1',
+    database: 'bFriend_DB',
+    port: 3307
+});
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -39,6 +48,7 @@ app.post('/change-status', (req, res) => {
     fs.writeFileSync(dataPath, JSON.stringify(customerData, null, 2), 'utf-8');
 
     return res.status(200).json({ message: 'User status changed successfully', user });
+
 });
 app.put('/update-payment', (req, res) => {
     const { customerId, paymentData } = req.body;
@@ -68,9 +78,21 @@ function activateMessaging(user) {
     user.messages.push({ text: 'Welcome! Messaging is now activated.', timestamp: new Date().toISOString() });
 }
 
-app.get('/admin-app', (req, res) => {
-    res.send(data)
-})
+app.get('/admin-app', async (req, res) => {
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query("SELECT * FROM account;");
+        console.log(result);
+        res.json(result);
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
+    }
+});
+
 
 app.get('/login', (req, res) => {
     let username = req.query.username
@@ -91,7 +113,7 @@ app.post('/register', (req, res) => {
     }
     res.send(newData);
 });
-
+module.exports = pool;
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
