@@ -23,7 +23,7 @@ const dataPath = 'tmp_customer_data.json';
 let customerData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 // Endpoint to change user status
-app.post('/change-status', (req, res) => {
+app.post('/status', (req, res) => {
     const { customerId, paymentConfirmation } = req.body;
 
     // Find user by customerId
@@ -50,7 +50,7 @@ app.post('/change-status', (req, res) => {
     return res.status(200).json({ message: 'User status changed successfully', user });
 
 });
-app.put('/update-payment', (req, res) => {
+app.put('/payment', (req, res) => {
     const { customerId, paymentData } = req.body;
 
     // Find the user by customerId
@@ -78,7 +78,7 @@ function activateMessaging(user) {
     user.messages.push({ text: 'Welcome! Messaging is now activated.', timestamp: new Date().toISOString() });
 }
 
-app.get('/admin-app', async (req, res) => {
+app.get('/account', async (req, res) => {
     let conn;
     try {
         conn = await pool.getConnection();
