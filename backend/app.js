@@ -2,13 +2,12 @@ const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser')
 const app = express();
-const data = require('./tmp_customer_data.json')
 const mariadb = require('mariadb');
 
 const pool = mariadb.createPool({
     host: 'localhost',
     user: 'root',
-    password: '1',
+    password: '1234',
     database: 'bFriend_DB',
     port: 3307
 });
@@ -16,11 +15,6 @@ const pool = mariadb.createPool({
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-const dataPath = 'tmp_customer_data.json';
-
-// Read customer data from JSON file
-let customerData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 // Endpoint to change user status
 app.post('/status', (req, res) => {
