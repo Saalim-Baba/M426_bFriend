@@ -6,7 +6,7 @@ function Navbar() {
         <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
             <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
                 <Link to="/" className="flex items-center">
-                    <img src="/11c7a56403bb2371acfa14a797b14571.webp" className="h-20 mr-3 sm:h-9 rounded-full" alt="user"/>
+                    <img src="/11c7a56403bb2371acfa14a797b14571.webp" className="h-9 mr-3 sm:h-12 rounded-full" alt="user"/>
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Welcome User</span>
                 </Link>
                 <div className="flex items-center lg:order-2">
