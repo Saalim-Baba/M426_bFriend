@@ -3,7 +3,7 @@ const mariadb = require('mariadb');
 const pool = mariadb.createPool({
     host: 'localhost',
     user: 'root',
-    password: '1',
+    password: '1234',
     database: 'bFriend_DB',
     connectionLimit: 10,
     port: 3307
