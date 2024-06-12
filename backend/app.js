@@ -46,6 +46,8 @@ app.post('/status', async (req, res) => {
 });
 
 app.put('/payment', (req, res) => {
+    //Todo: get cardID from customerID, change table Card-Info accordingly
+
     const { customerId, paymentData } = req.body;
 
     const user = customerData.customers.find(customer => customer.customerId === customerId);
@@ -97,7 +99,7 @@ app.delete('/account', async (req, res) => {
     }
 });
 
-app.get('/account', async (req, res) => {
+app.get('/accounts', async (req, res) => {
     let conn;
     try {
         conn = await pool.getConnection();
