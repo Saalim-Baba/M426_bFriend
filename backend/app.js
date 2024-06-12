@@ -113,14 +113,27 @@ app.get('/login', async (req, res) => {
 });
 
 
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
     let newData = req.body;
-    console.log("Received data:", newData);
-    if (Object.keys(newData).length === 0) {
-        console.error("No data received. Make sure the Content-Type is set to application/json");
-        return res.status(400).json({ error: "No data received" });
+
+    let conn;
+    let result;
+    try {
+        conn = await pool.getConnection();
+        result = await conn.query("SELECT * FROM account;");
+        let customer = result.find((customer) => customer.Username === newData.Username);
+        if (customer === undefined) {
+            const sql = "INSERT INTO Account (Username, `Name`, Lastname, `Description`, Subscription_ID, `Password`, Admin_Rights, Mode_ID) VALUES (?,?,?,?,?,?,?,?);"
+            const values = [newData.Username, newData.Name, newData.Lastname, newData.Description, newData.Subscription_ID, newData.Password, newData.Admin_Rights, newData.Mode_ID]
+            await conn.query(sql, values);
+        }
+    } catch (err) {
+        console.error('Database query error:', err);
+        return res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
     }
-    res.send(newData);
+    res.send().status(200)
 });
 module.exports = pool;
 const PORT = process.env.PORT || 3000;
