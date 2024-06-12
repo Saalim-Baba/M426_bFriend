@@ -66,6 +66,38 @@ app.put('/payment', (req, res) => {
 });
 
 app.get('/account', async (req, res) => {
+    const accountId = req.body
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query("SELECT * FROM Account WHERE Account_ID = ?", [accountId]);
+        console.log(result);
+        res.status(200).json(result);
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
+    }
+});
+
+app.delete('/account', async (req, res) => {
+    const accountId = req.body
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query("DELETE * FROM Account WHERE Account_ID = ?", [accountId]);
+        console.log(result);
+        res.status(204).json(result);
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
+    }
+});
+
+app.get('/account', async (req, res) => {
     let conn;
     try {
         conn = await pool.getConnection();
