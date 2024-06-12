@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 import Home from './Pages/Home';
+import StartPage from "./Pages/Start"
 import Chat from './Pages/Chat';
 import SignInPage from "./Pages/SignIn";
 import Profile from "./Pages/Profile";
