@@ -3,6 +3,14 @@ const fs = require('fs');
 const bodyParser = require('body-parser')
 const app = express();
 const mariadb = require('mariadb');
+const session = require('express-session')
+
+app.use(session({
+    secret: 'keyboard cat',            // Secret string used to sign the session ID cookie
+    resave: false,                     // Do not save the session back to the store if it hasn't been modified
+    saveUninitialized: true,           // Save new sessions even if they are uninitialized
+    cookie: { secure: true }           // Only send the cookie over HTTPS connections
+}))
 
 const pool = mariadb.createPool({
     host: 'localhost',
@@ -136,6 +144,7 @@ app.get('/login', async (req, res) => {
 
     if (customer) {
         if (password === customer.Password) {
+            req.session.authorition = true
             return res.status(200).send(customer);
         } else {
             return res.status(401).send('Incorrect password');
