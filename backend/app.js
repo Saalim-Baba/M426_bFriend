@@ -199,7 +199,6 @@ app.delete('/interest/:id', async (req, res) => {
     try {
         conn = await pool.getConnection();
         await conn.query("DELETE FROM Interests WHERE Interests_ID = ?", [interest_id]);
-        console.log(result);
         res.sendStatus(204)
     } catch (err) {
         console.error('Database query error:', err);
