@@ -20,7 +20,7 @@ function Start(){
                         Dive into discussions and activities with more than 16 million shared experiences!
                     </p>
                     <p className="text-lg text-white mb-4">
-                        Completely free to use - no ads, no fees, just pure social fun (donations are welcome to keep us running! 🙏)
+                        If you want friends, it comes with a cost - just pure social fun (donations are welcome to keep us running! 🙏)
                     </p>
                     <Link to="/signin">
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

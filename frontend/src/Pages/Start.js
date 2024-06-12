@@ -1,15 +1,14 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
-import Cards from "../Components/Cards"
 import Start from "../Components/Start"
 
-function Home() {
+function StartPage() {
     return (
         <div className="home-section">
             <Navbar />
-            <Cards />
+            <Start />
         </div>
     );
 }
 
-export default Home;
+export default StartPage;

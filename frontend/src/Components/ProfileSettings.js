@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 const ProfileSettings = () => {
     const [formData, setFormData] = useState({
         name: 'hihi',
-        email: '',
-        currentPassword: '',
-        newPassword: '',
-        confirmPassword: ''
+        about: 'Im gay',
+        images: ["/original-177e8d255f0b6e0b259b6d662be56bab3379d651768a940dc8ef300dec0b41cf.jpg", "/11c7a56403bb2371acfa14a797b14571.webp"],
+        imagesChange: ["/addImg.png", "/deleteImg.png"]
     });
 
     const handleChange = (e) => {
@@ -16,79 +15,53 @@ const ProfileSettings = () => {
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission, e.g., make API call to update profile
-        console.log('Form submitted:', formData);
+    const handleAddImage = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setFormData({
+                ...formData,
+                images: [...formData.images, reader.result]
+            });
+        };
+        reader.readAsDataURL(file);
+    };
+
+    const handleClickAddImage = () => {
+        document.getElementById('fileInput').click();
     };
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
-            <h2 className="text-2xl font-bold mb-6">Profile Settings</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label className="block text-sm font-medium text-gray-700">Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                </div>
+        <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg m-10">
+            <h2 className="text-lg font-bold mb-2">Profile Pictures</h2>
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
+            <form>
+                <div className="flex flex-wrap m-2">
+                    {formData.images.map((image, index) =>
+                        <img key={index} src={image}
+                             style={{
+                                 height: '200px',
+                                 width: 'calc(33.3333% - 8px)'}}
+                             className="rounded-lg border m-1 relative"/>
+                    )}
+                    <img src={formData.imagesChange[0]}
+                         style={{
+                             height: '200px',
+                             width: 'calc(33.3333% - 8px)',
+                             cursor: 'pointer'}}
+                         className="rounded-lg border m-1 relative"
+                         onClick={handleClickAddImage}/>
                 </div>
-
-                <div>
-                    <label className="block text-sm font-medium text-gray-700">Current Password</label>
-                    <input
-                        type="password"
-                        name="currentPassword"
-                        value={formData.currentPassword}
-                        onChange={handleChange}
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-sm font-medium text-gray-700">New Password</label>
-                    <input
-                        type="password"
-                        name="newPassword"
-                        value={formData.newPassword}
-                        onChange={handleChange}
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-sm font-medium text-gray-700">Confirm New Password</label>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                </div>
-
-                <div>
-                    <button
-                        type="submit"
-                        className="w-full bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
-                    >
-                        Update Profile
-                    </button>
-                </div>
+                <input type='file' id='fileInput' style={{ display: 'none' }} onChange={handleAddImage} />
+                <label htmlFor="about" className="text-lg font-bold mb-2">About {formData.name}</label>
+                <textarea
+                    id="about"
+                    name="about"
+                    rows="4"
+                    value={formData.about}
+                    onChange={handleChange}
+                    className="block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                ></textarea>
             </form>
         </div>
     );
