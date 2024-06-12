@@ -127,6 +127,89 @@ app.get('/accounts', async (req, res) => {
     }
 });
 
+app.get('/account/interests/:id', async (req, res) => {
+    const accountId = req.params.id;
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query("SELECT * FROM Account_Interests WHERE Account_ID = ?", [accountId]);
+        console.log(result);
+        res.status(200).json(result)
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
+    }
+})
+
+app.delete('/account/interests/:id/:interest_id', async (req, res) => {
+    const account_id = req.params.id;
+    const interest_id = req.params.interest_id;
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        await conn.query("DELETE FROM Account_Interests WHERE Account_ID = ? AND Interests_ID = ?", [account_id, interest_id]);
+        res.sendStatus(204);  // No content response
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
+    }
+});
+
+app.get('/interests', async (req, res) => {
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query("SELECT * FROM Interests;");
+        res.status(200).json(result);
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
+    }
+});
+
+app.get('/interest/:id', async (req, res) => {
+    const interest_id = req.params.id;
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query("SELECT * FROM Interests WHERE Interests_ID = ?", [interest_id]);
+        console.log(result);
+        res.status(200).json(result);
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        try {
+            if (conn) await conn.release();
+        } catch (releaseErr) {
+            console.error('Error releasing connection:', releaseErr);
+        }
+    }
+});
+
+app.delete('/interest/:id', async (req, res) => {
+    const interest_id = req.params.id;
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        await conn.query("DELETE FROM Interests WHERE Interests_ID = ?", [interest_id]);
+        console.log(result);
+        res.sendStatus(204)
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
+    }
+});
+
+
 app.get('/login', async (req, res) => {
     let username = req.query.username;
     let password = req.query.password;
