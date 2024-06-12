@@ -67,8 +67,8 @@ app.put('/payment', (req, res) => {
     return res.status(200).json({ message: 'Payment data updated successfully', user });
 });
 
-app.get('/account', async (req, res) => {
-    const accountId = req.body
+app.get('/account/:id', async (req, res) => {
+    const accountId = req.params.id;
     let conn;
     try {
         conn = await pool.getConnection();
@@ -79,18 +79,23 @@ app.get('/account', async (req, res) => {
         console.error('Database query error:', err);
         res.status(500).send(err.message);
     } finally {
-        if (conn) await conn.release();
+        try {
+            if (conn) await conn.release();
+        } catch (releaseErr) {
+            console.error('Error releasing connection:', releaseErr);
+        }
     }
 });
 
-app.delete('/account', async (req, res) => {
-    const accountId = req.body
+
+app.delete('/account/:id', async (req, res) => {
+    const accountId = req.params.id;
     let conn;
     try {
         conn = await pool.getConnection();
-        const result = await conn.query("DELETE * FROM Account WHERE Account_ID = ?", [accountId]);
+        await conn.query("DELETE FROM Account WHERE Account_ID = ?", [accountId]);
         console.log(result);
-        res.status(204).json(result);
+        res.sendStatus(204)
     } catch (err) {
         console.error('Database query error:', err);
         res.status(500).send(err.message);

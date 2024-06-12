@@ -34,8 +34,8 @@ CREATE TABLE Message(
     Sender_ID INT,
     Receiver_ID INT,
     Content VARCHAR(65536),
-    FOREIGN KEY (Sender_ID) REFERENCES Account(Account_ID),
-    FOREIGN KEY (Receiver_ID) REFERENCES Account(Account_ID)
+    FOREIGN KEY (Sender_ID) REFERENCES Account(Account_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Receiver_ID) REFERENCES Account(Account_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Account(
@@ -48,22 +48,22 @@ CREATE TABLE Account(
     `Password` VARCHAR(255),
     Admin_Rights BOOLEAN,
     Mode_ID INT,
-    FOREIGN KEY (Subscription_ID) REFERENCES Subscription(Subscription_ID),
-    FOREIGN KEY (Mode_ID) REFERENCES Mode(Mode_ID)
+    FOREIGN KEY (Subscription_ID) REFERENCES Subscription(Subscription_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Mode_ID) REFERENCES Mode(Mode_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Account_Interests(
     Account_Interests_ID INT PRIMARY KEY AUTO_INCREMENT,
     Account_ID INT,
     Interests_ID INT,
-    FOREIGN KEY (Interests_ID) REFERENCES Interests(Interests_ID),
-    FOREIGN KEY (Account_ID) REFERENCES Account(Account_ID)
+    FOREIGN KEY (Interests_ID) REFERENCES Interests(Interests_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Account_ID) REFERENCES Account(Account_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Account_Card_Info(
     Account_Card_Info_ID INT PRIMARY KEY AUTO_INCREMENT,
     Card_ID INT,
     Account_ID INT,
-    FOREIGN KEY (Card_ID) REFERENCES Card_Info(Card_ID),
-    FOREIGN KEY (Account_ID) REFERENCES Account(Account_ID)
+    FOREIGN KEY (Card_ID) REFERENCES Card_Info(Card_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Account_ID) REFERENCES Account(Account_ID) ON DELETE CASCADE
 );
