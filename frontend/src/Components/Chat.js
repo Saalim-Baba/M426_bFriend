@@ -51,7 +51,7 @@ function Chat() {
         <div style={{height: '91vh'}} className="flex flex-col font-sans">
             <div className="flex flex-1 overflow-hidden">
                 <div className="w-64 border-r border-black overflow-y-scroll bg-white p-2.5">
-                    <h2>Contacts</h2>
+                    <h2 className="font-bold">Contacts</h2>
                     {contacts.map((contact) => (
                         <div
                             key={contact.id}
@@ -71,7 +71,7 @@ function Chat() {
                             src="/Screenshot_20221220_090248.png"
                             className="rounded-full w-10 h-10 mr-2"
                         />
-                        <span className="font-semibold">{selectedContact.name}</span>
+                        <span className="font-bold">{selectedContact.name}</span>
                     </div>
                     <div className="flex-1 overflow-y-scroll p-2.5 bg-white">
                         {messages[selectedContact.id].map((message, index) => (
@@ -79,22 +79,22 @@ function Chat() {
                                 key={index}
                                 className={`p-2 my-1.5 flex ${message.fromMe ? 'justify-end' : 'justify-start'}`}
                             >
-                                <div className="bg-green-100 p-2 rounded">
+                                <div className="p-2 border rounded shadow">
                                     <span>{message.text}</span>
-                                    <span className="text-sm text-gray-600 ml-2.5">{new Date(message.timestamp).toLocaleTimeString()}</span>
+                                    <span className="text-sm text-gray-600 ml-2.5 ">{new Date(message.timestamp).toLocaleTimeString()}</span>
                                 </div>
                             </div>
                         ))}
                     </div>
                     <div className="flex p-2.5 border-t border-black bg-white sticky bottom-0">
                         <input
-                            className="flex-1 p-2.5 border border-black mr-2.5"
+                            className="flex-1 p-2.5 border border-black rounded shadow mr-2.5"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyPress={handleKeyPress}
                             placeholder="Type a message"
                         />
-                        <button className="p-2.5 px-5 border border-black bg-green-100 cursor-pointer"
+                        <button className="p-2.5 px-5 border border-black rounded shadow cursor-pointer"
                                 onClick={handleSendMessage}
                         >Send</button>
                     </div>
