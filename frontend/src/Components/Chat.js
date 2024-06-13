@@ -48,7 +48,7 @@ function Chat() {
     };
 
     return (
-        <div style={{height: '91vh'}} className="flex flex-col font-sans">
+        <div className="flex flex-col font-sans flex-1">
             <div className="flex flex-1 overflow-hidden">
                 <div className="w-64 border-r border-black overflow-y-scroll bg-white p-2.5">
                     <h2 className="font-bold">Contacts</h2>
