@@ -5,7 +5,7 @@ import Start from "../Components/Start"
 
 function Home() {
     return (
-        <div className="home-section">
+        <div className="flex flex-col min-h-screen">
             <Navbar />
             <Cards />
         </div>

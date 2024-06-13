@@ -4,7 +4,7 @@ import Start from "../Components/Start"
 
 function StartPage() {
     return (
-        <div className="home-section">
+        <div className="flex flex-col min-h-screen">
             <Navbar />
             <Start />
         </div>

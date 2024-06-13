@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Start(){
     return(
-        <div className="bg-emerald-600 min-h-screen flex flex-col items-center justify-center text-center p-6">
+        <div className="bg-emerald-600 flex flex-col items-center justify-center text-center p-6 flex-1">
             <div className="flex flex-wrap justify-center items-center md:space-x-6">
                 {/* Left Image */}
                 <img src="/11c7a56403bb2371acfa14a797b14571.webp" alt="Community" className="hidden xl:block h-96 w-72 object-cover m-3 rounded-2xl" />
