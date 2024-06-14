@@ -2,28 +2,29 @@ import React, { useState } from 'react';
 
 const ProfileSettings = () => {
     const [formData, setFormData] = useState({
-        name: 'hihi',
-        about: 'Im gay',
-        images: ["/original-177e8d255f0b6e0b259b6d662be56bab3379d651768a940dc8ef300dec0b41cf.jpg", "/11c7a56403bb2371acfa14a797b14571.webp"],
+        name: 'Terry Davis',
+        about: 'im gay',
+        images: [
+            "/original-177e8d255f0b6e0b259b6d662be56bab3379d651768a940dc8ef300dec0b41cf.jpg",
+            "/11c7a56403bb2371acfa14a797b14571.webp"
+        ],
         imagesChange: ["/addImg.png", "/deleteImg.png"],
-        hobbies: ["gooning", "backshotting friends", "peanut butter + dog", "leandro agy"]
+        hobbies: ["molesting", "peanut butter + dog", "leandro gay"]
     });
+    const [currentHobby, setCurrentHobby] = useState("");
+    const [hobbyIndex, setHobbyIndex] = useState(-1);
+    const [isPopupEditOpen, setPopupEditOpen] = useState(false);
+    const [isPopupAddOpen, setPopupAddOpen] = useState(false);
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleAddImage = (e) => {
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onloadend = () => {
-            setFormData({
-                ...formData,
-                images: [...formData.images, reader.result]
-            });
+            setFormData({ ...formData, images: [...formData.images, reader.result] });
         };
         reader.readAsDataURL(file);
     };
@@ -32,17 +33,34 @@ const ProfileSettings = () => {
         document.getElementById('fileInput').click();
     };
 
-    const [isPopupEditOpen, setPopupEditOpen] = useState(false);
-
-
-    const toggleEditPopup = () => {
+    const toggleEditPopup = (hobby = "", index = -1) => {
+        setCurrentHobby(hobby);
+        setHobbyIndex(index);
         setPopupEditOpen(!isPopupEditOpen);
     };
 
-    const [isPopupAddOpen, setPopupAddOpen] = useState(false);
-
     const toggleAddPopup = () => {
         setPopupAddOpen(!isPopupAddOpen);
+        setCurrentHobby(""); // Reset current hobby on open/close add popup
+    };
+
+    const handleAddHobby = () => {
+        if (currentHobby) {
+            setFormData({
+                ...formData,
+                hobbies: [...formData.hobbies, currentHobby]
+            });
+            toggleAddPopup();
+        }
+    };
+
+    const handleEditHobby = () => {
+        if (currentHobby && hobbyIndex >= 0) {
+            let updatedHobbies = [...formData.hobbies];
+            updatedHobbies[hobbyIndex] = currentHobby;
+            setFormData({ ...formData, hobbies: updatedHobbies });
+            toggleEditPopup();
+        }
     };
 
     return (
@@ -82,7 +100,7 @@ const ProfileSettings = () => {
                 <textarea
                     id="about"
                     name="about"
-                    rows="4"
+                    rows="2"
                     value={formData.about}
                     onChange={handleChange}
                     className="block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-left m-2"
@@ -92,7 +110,7 @@ const ProfileSettings = () => {
                     {formData.hobbies.map((element, index) => (
                         <div key={index}
                              className="px-4 py-2 bg-gray-100 border border-gray-300 rounded shadow cursor-pointer m-1 text-sm"
-                             onClick={toggleEditPopup}>
+                             onClick={() => toggleEditPopup(element, index)}>
                             {element}
                         </div>
                     ))}
@@ -107,16 +125,45 @@ const ProfileSettings = () => {
                 {isPopupEditOpen && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
                         <div className="bg-white p-5 rounded-lg shadow-lg w-96">
-                            <h4 className="text-lg font-bold mb-2">Edit</h4>
-                            <button onClick={toggleEditPopup}>Close</button>
+                            <h4 className="text-lg font-bold mb-2">Edit Hobby</h4>
+                            <div className="flex items-center">
+                                <input type="text"
+                                       className="flex-1 py-2 px-3 border border-gray-400 rounded-l-lg focus:outline-none h-10"
+                                       value={currentHobby}
+                                       onChange={(e) => setCurrentHobby(e.target.value)}
+                                       autoFocus />
+                                <button onClick={handleEditHobby}
+                                        className="bg-blue-400 hover:bg-blue-500 text-white rounded-r-lg py-2 px-3 font-bold h-10">
+                                    Edit
+                                </button>
+                                <button onClick={() => toggleEditPopup()}
+                                        className="ml-2 bg-red-500 hover:bg-red-600 text-white rounded-lg py-2 px-3 font-bold h-10">
+                                    Cancel
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
                 {isPopupAddOpen && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
                         <div className="bg-white p-5 rounded-lg shadow-lg w-96">
-                            <h4 className="text-lg font-bold mb-2">Add</h4>
-                            <button onClick={toggleAddPopup}>Close</button>
+                            <h4 className="text-lg font-bold mb-2">Add Hobby</h4>
+                            <div className="flex items-center">
+                                <input type="text"
+                                       className="flex-1 py-2 px-3 border border-gray-400 rounded-l-lg focus:outline-none h-10"
+                                       placeholder="Add hobby"
+                                       value={currentHobby}
+                                       onChange={(e) => setCurrentHobby(e.target.value)}
+                                       autoFocus />
+                                <button onClick={handleAddHobby}
+                                        className="bg-blue-400 hover:bg-blue-500 text-white rounded-r-lg py-2 px-3 font-bold h-10">
+                                    Add
+                                </button>
+                                <button onClick={toggleAddPopup}
+                                        className="ml-2 bg-red-500 hover:bg-red-600 text-white rounded-lg py-2 px-3 font-bold h-10">
+                                    Cancel
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
