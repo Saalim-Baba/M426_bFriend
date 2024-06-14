@@ -73,13 +73,13 @@ function Chat() {
                         />
                         <span className="font-bold">{selectedContact.name}</span>
                     </div>
-                    <div className="flex-1 overflow-y-scroll p-2.5 bg-white">
+                    <div className="flex-1 overflow-y-scroll p-2.5 bg-gradient-to-r from-green-100 to-green-400" style={{ backgroundImage: "url('/11c7a56403bb2371acfa14a797b14571.webp')" }}>
                         {messages[selectedContact.id].map((message, index) => (
                             <div
                                 key={index}
                                 className={`p-2 my-1.5 flex ${message.fromMe ? 'justify-end' : 'justify-start'}`}
                             >
-                                <div className="p-2 border rounded shadow">
+                                <div className="p-2 border rounded shadow bg-white">
                                     <span>{message.text}</span>
                                     <span className="text-sm text-gray-600 ml-2.5 ">{new Date(message.timestamp).toLocaleTimeString()}</span>
                                 </div>
