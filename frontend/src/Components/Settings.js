@@ -22,10 +22,22 @@ function SettingsPage() {
                     </div>
                 </div>;
             case 'user':
-                return <div className="flex items-start p-6 mt-4 bg-white shadow-md rounded-lg border border-gray-200">
-                    <button onClick={() => setActiveSetting("new_password")} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150">
+                return <div className="flex flex-col items-start p-6 mt-4 bg-white shadow-md rounded-lg border border-gray-200">
+                    <button onClick={() => setActiveSetting("new_password")} className=" w-56 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150">
                         <div className="bg-white shadow hover:shadow-lg rounded-lg p-2 border border-gray-200">
-                            <h1 className="text-sm font-semibold text-gray-800">Change Password</h1>
+                            <h1 className="text-m font-semibold text-gray-800">Change Password</h1>
+                        </div>
+                    </button>
+                    <br/>
+                    <button onClick={() => setActiveSetting("theme")} className="w-56 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150">
+                        <div className="bg-white shadow hover:shadow-lg rounded-lg p-2 border border-gray-200">
+                            <h1 className="text-m font-semibold text-gray-800">Theme</h1>
+                        </div>
+                    </button>
+                    <br/>
+                    <button onClick={() => setActiveSetting("personal_info")} className="w-56 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150">
+                        <div className="bg-white shadow hover:shadow-lg rounded-lg p-2 border border-gray-200">
+                            <h1 className="text-m font-semibold text-gray-800">Personal Information</h1>
                         </div>
                     </button>
                 </div>;
