@@ -4,7 +4,7 @@ import SignIn from "../Components/SignIn";
 
 function SignInPage() {
     return (
-        <div className="home-section">
+        <div className="flex flex-col min-h-screen">
             <Navbar />
             <SignIn />
         </div>
