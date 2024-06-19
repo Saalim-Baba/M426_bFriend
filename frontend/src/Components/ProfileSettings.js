@@ -9,7 +9,7 @@ const ProfileSettings = () => {
             "/11c7a56403bb2371acfa14a797b14571.webp"
         ],
         imagesChange: ["/addImg.png", "/deleteImg.png"],
-        hobbies: ["molesting", "peanut butter + dog", "leandro gay"]
+        hobbies: ["Surfing", "4chan", "take a walk"]
     });
     const [currentHobby, setCurrentHobby] = useState("");
     const [hobbyIndex, setHobbyIndex] = useState(-1);
