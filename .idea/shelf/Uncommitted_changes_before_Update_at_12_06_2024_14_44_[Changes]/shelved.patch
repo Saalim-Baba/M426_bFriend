@@ -1,0 +1,75 @@
+Index: frontend/src/Components/Navbar.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\r\nimport { Link } from 'react-router-dom';\r\n\r\n\r\nfunction paid(){\r\n    let paid = false\r\n    if (paid){\r\n        return(\r\n          <div className=\"flex items-center\">\r\n        <Link to=\"/message\" className=\"text-white hover:text-gray-400 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 lg:mr-3\">\r\n            Message\r\n        </Link>\r\n          </div>\r\n        )\r\n    } else{\r\n        return(\r\n            <div className=\"flex items-center\">\r\n                <Link to=\"/pay\" className=\"text-white hover:text-gray-400 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 lg:mr-3\">\r\n                    Pay\r\n                </Link>\r\n            </div>\r\n        )\r\n        }\r\n}\r\n\r\nfunction login(){\r\n    let loggedIn = true\r\n    if (loggedIn){\r\n        return(\r\n            <Link to=\"/\" className=\"flex items-center\">\r\n                <img src=\"/11c7a56403bb2371acfa14a797b14571.webp\" className=\"h-9 mr-3 sm:h-9 rounded-full\" alt=\"user\"/>\r\n                <span className=\"self-center text-xl font-semibold whitespace-nowrap dark:text-white\">Welcome User</span>\r\n            </Link>\r\n        )\r\n    } else{\r\n        return(\r\n            <Link to=\"/signin\" className=\"flex items-center text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800\">\r\n                Sign in\r\n            </Link>\r\n        )\r\n    }\r\n}\r\n\r\nfunction Navbar() {\r\n    return (\r\n        <nav className=\"bg-white border-gray-200 py-2.5 dark:bg-gray-900\">\r\n            <div className=\"flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto\">\r\n                <Link to=\"/\">\r\n                    <h1 className=\"text-white\">\r\n                        BeFriends\r\n                    </h1>\r\n                </Link>\r\n                {paid()}\r\n                {login()}\r\n            </div>\r\n        </nav>\r\n    );\r\n}\r\n\r\nexport default Navbar;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/Components/Navbar.js b/frontend/src/Components/Navbar.js
+--- a/frontend/src/Components/Navbar.js	(revision f78d0704d4debb8d607f75d082a8773df598cc98)
++++ b/frontend/src/Components/Navbar.js	(date 1718196211171)
+@@ -43,7 +43,7 @@
+ 
+ function Navbar() {
+     return (
+-        <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
++        <nav className="bg-black border-gray-200 py-2.5 dark:bg-gray-900">
+             <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+                 <Link to="/">
+                     <h1 className="text-white">
+Index: frontend/src/Components/Settings.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\r\n\r\nfunction Settings(){\r\n    return(\r\n        <div className=\"mb-[-6rem]\">\r\n            <h1 className=\"mt-10 text-2xl\">Settings</h1>\r\n            <div className=\"flex flex-col h-screen w-60 ml-10 py-20 items-start\">\r\n                <div className=\"border w-64\">\r\n                    <h1 className=\"p-10\">Privacy Settings</h1>\r\n                </div>\r\n                <div className=\"border w-64\">\r\n                    <h1 className=\"p-10\">Notification Settings</h1>\r\n                </div>\r\n                <div className=\"border w-64\">\r\n                    <h1 className=\"p-10\">User Settings</h1>\r\n                </div>\r\n                <div className=\"border w-64\">\r\n                    <h1 className=\"p-10\">Theme</h1>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    )}\r\nexport default Settings;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/Components/Settings.js b/frontend/src/Components/Settings.js
+--- a/frontend/src/Components/Settings.js	(revision f78d0704d4debb8d607f75d082a8773df598cc98)
++++ b/frontend/src/Components/Settings.js	(date 1718196017861)
+@@ -1,24 +1,33 @@
+ import React from 'react';
+ 
++
+ function Settings(){
+     return(
+-        <div className="mb-[-6rem]">
+-            <h1 className="mt-10 text-2xl">Settings</h1>
++        <div className="pb-[-6rem]">
++            <h1 className="mt-24 text-2xl">Settings</h1>
+             <div className="flex flex-col h-screen w-60 ml-10 py-20 items-start">
++                <button>
+                 <div className="border w-64">
+-                    <h1 className="p-10">Privacy Settings</h1>
++                        <h1 className="p-10">Privacy Settings</h1>
+                 </div>
+-                <div className="border w-64">
+-                    <h1 className="p-10">Notification Settings</h1>
+-                </div>
+-                <div className="border w-64">
+-                    <h1 className="p-10">User Settings</h1>
+-                </div>
++                </button>
++                <button>
++                    <div className="border w-64">
++
++                        <h1 className="p-10">Notification Settings</h1>
++                    </div>
++                </button>
++                <button>
++                    <div className="border w-64">
++                            <h1 className="p-10">User Settings</h1>
++                    </div>
++                </button>
++                <button>
+                 <div className="border w-64">
+-                    <h1 className="p-10">Theme</h1>
++                        <h1 className="p-10">Theme</h1>
+                 </div>
++                </button>
+             </div>
+-
+         </div>
+     )}
+ export default Settings;
+\ No newline at end of file
