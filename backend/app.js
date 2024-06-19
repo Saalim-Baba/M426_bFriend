@@ -1,5 +1,4 @@
 const express = require('express');
-const fs = require('fs');
 const bodyParser = require('body-parser')
 const app = express();
 const mariadb = require('mariadb');
@@ -53,26 +52,38 @@ app.post('/status', async (req, res) => {
     }
 });
 
-app.put('/payment', (req, res) => {
-    //Todo: get cardID from customerID, change table Card-Info accordingly
+app.put('/account/payment', async (req, res) => {
+    const { accountId, paymentData } = req.body;
 
-    const { customerId, paymentData } = req.body;
-
-    const user = customerData.customers.find(customer => customer.customerId === customerId);
-
-    if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-    }
-
-    if (!paymentData || !paymentData.cardNumber || !paymentData.ValidThru || !paymentData.CCV || !paymentData.IBAN || !paymentData.currency) {
+    if (!accountId || !paymentData || !paymentData.cardHolder || !paymentData.cardNumber || !paymentData.securityCode || !paymentData.expiryDate) {
         return res.status(400).json({ error: 'Invalid payment data' });
     }
 
-    user.paymentData = paymentData;
+    let conn;
+    try {
+        conn = await pool.getConnection();
 
-    fs.writeFileSync(dataPath, JSON.stringify(customerData, null, 2), 'utf-8');
+        // Retrieve Card_ID from Account_ID
+        const [accountCardInfo] = await conn.query("SELECT Card_ID FROM Account_Card_Info WHERE Account_ID = ?", [accountId]);
+        if (!accountCardInfo) {
+            return res.status(404).json({ error: 'Card information not found for the given account ID' });
+        }
 
-    return res.status(200).json({ message: 'Payment data updated successfully', user });
+        const cardId = accountCardInfo.Card_ID;
+
+        // Update card info
+        await conn.query("UPDATE Card_Info SET Card_Holder = ?, Card_Number = ?, Security_Code = ?, Card_ExpiryDate = ? WHERE Card_ID = ?",
+            [paymentData.cardHolder, paymentData.cardNumber, paymentData.securityCode, paymentData.expiryDate, cardId]);
+
+        await conn.commit();
+
+        res.status(200).json({ message: 'Payment data updated successfully' });
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        if (conn) await conn.release();
+    }
 });
 
 app.get('/account/:id', async (req, res) => {
@@ -95,9 +106,33 @@ app.get('/account/:id', async (req, res) => {
     }
 });
 
-
-app.delete('/account/:id', async (req, res) => {
+app.get('/account/:id', async (req, res) => {
     const accountId = req.params.id;
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query("SELECT * FROM Account WHERE Account_ID = ?", [accountId]);
+
+        if (result.length === 0) {
+            res.status(404).json({ error: 'No account found with the provided ID' });
+            return;
+        }
+
+        res.status(200).json(result);
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send(err.message);
+    } finally {
+        try {
+            if (conn) await conn.release();
+        } catch (releaseErr) {
+            console.error('Error releasing connection:', releaseErr);
+        }
+    }
+});
+
+app.delete('/account', async (req, res) => {
+    const accountId = req.body
     let conn;
     try {
         conn = await pool.getConnection();
@@ -111,6 +146,7 @@ app.delete('/account/:id', async (req, res) => {
         if (conn) await conn.release();
     }
 });
+
 
 app.get('/accounts', async (req, res) => {
     let conn;
@@ -265,6 +301,37 @@ app.post('/register', async (req, res) => {
     }
     res.send().status(200)
 });
+
+app.patch('/account/:id', async (req, res) => {
+    const id = req.params.id;
+    const replacer = req.body;
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const [user] = await conn.query("SELECT * FROM Account WHERE Account_ID = ?", [id]);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const keys = Object.keys(replacer);
+        const values = Object.values(replacer);
+        const setClause = keys.map(key => `${key} = ?`).join(', ');
+        const sql = `UPDATE Account SET ${setClause} WHERE Account_ID = ?`;
+        values.push(id);
+
+        await conn.query(sql, values);
+        const [updatedUser] = await conn.query("SELECT * FROM Account WHERE Account_ID = ?", [id]);
+        res.json(updatedUser);
+
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    } finally {
+        if (conn) await conn.release();
+    }
+});
+
+
 module.exports = pool;
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
