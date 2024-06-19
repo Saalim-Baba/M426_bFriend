@@ -48,7 +48,7 @@ function Chat() {
     };
 
     return (
-        <div className="flex flex-col font-sans flex-1">
+        <div style={{height: '94vh'}} className="flex flex-col font-sans">
             <div className="flex flex-1 overflow-hidden">
                 <div className="w-64 border-r border-black overflow-y-scroll bg-white p-2.5">
                     <h2 className="font-bold">Contacts</h2>
@@ -73,15 +73,22 @@ function Chat() {
                         />
                         <span className="font-bold">{selectedContact.name}</span>
                     </div>
-                    <div className="flex-1 overflow-y-scroll p-2.5 bg-gradient-to-r from-green-100 to-green-400" style={{ backgroundImage: "url('/11c7a56403bb2371acfa14a797b14571.webp')" }}>
+                    <div className="flex-1 overflow-y-scroll p-2.5 bg-gradient-to-r from-green-100 to-green-400"
+                         style={{
+                             backgroundImage: "url('/white-abstract-background-with-hexagon-pattern-style-seamless-concept_57082-2426.png')",
+                             backgroundSize: "600px auto",  // Set the size of the image
+                             backgroundRepeat: "repeat"      // Enable repeating the background image
+                         }}>
                         {messages[selectedContact.id].map((message, index) => (
                             <div
                                 key={index}
                                 className={`p-2 my-1.5 flex ${message.fromMe ? 'justify-end' : 'justify-start'}`}
                             >
-                                <div className="p-2 border rounded shadow bg-white">
+                                <div className="p-4 border rounded shadow bg-white">
                                     <span>{message.text}</span>
-                                    <span className="text-sm text-gray-600 ml-2.5 ">{new Date(message.timestamp).toLocaleTimeString()}</span>
+                                    <span className="text-sm text-gray-600 ml-2.5">
+                                        {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                    </span>
                                 </div>
                             </div>
                         ))}
