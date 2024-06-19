@@ -12,7 +12,7 @@ function Chat() {
         1: [
             { text: "say gex", timestamp: "2024-06-12T12:00:00.000Z", fromMe: false },
             { text: "gex", timestamp: "2024-06-12T12:13:00.000Z", fromMe: true },
-            { text: "want gay sex?", timestamp: "2024-06-12T12:14:00.000Z", fromMe: false }
+            { text: "bogos binted?", timestamp: "2024-06-12T12:14:00.000Z", fromMe: false }
         ],
         2: [
             { text: "hi Gex", timestamp: "2024-06-12T12:10:00.000Z", fromMe: false }
