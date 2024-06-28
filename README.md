@@ -31,7 +31,6 @@ In der Pilotphase soll ein Prototyp erstellt werden, um die Machbarkeit des Proj
 - **Database:** MariaDB
 - **Frontend:** ReactJS & Tailwind CSS
 - **Backend:**  ExpressJS
-- **Hosting:**  Vercel
 
 ### Repository
 
@@ -56,3 +55,53 @@ Einige der wichtigsten User Stories, die wir umsetzen werden:
 - **Nachrichtenfunktion:** Benutzer können Nachrichten an andere Benutzer senden.
 - **Filtermöglichkeiten:** Benutzer können ihre Suchkriterien filtern, um passende Aktivitätenpartner zu finden.
 
+
+
+
+
+
+
+
+Got it! Let's simplify it further based on your requirements:
+
+---
+
+### Instructions for Development
+
+#### Getting Started
+
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+   cd bFriend
+   ```
+
+2. **Install Dependencies**
+   - Ensure you have Node.js and npm installed.
+   ```bash
+   npm install
+   ```
+
+#### Running the Application
+   ```
+   - Start the server:
+   ```bash
+   npm start
+   ```
+   The backend server should now be running on `http://localhost:5000`.
+
+2. **Start Frontend Server**
+   - Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+   - Start the React development server:
+   ```bash
+   npm start
+   ```
+   The frontend should now be accessible in your browser at `http://localhost:3000`.
+
+#### Database Setup
+
+- **MariaDB**
+  - Ensure MariaDB is installed and running locally or on a server accessible to your development environment.
