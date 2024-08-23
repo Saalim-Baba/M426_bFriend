@@ -55,10 +55,11 @@ Einige der wichtigsten User Stories, die wir umsetzen werden:
 - **Nachrichtenfunktion:** Benutzer können Nachrichten an andere Benutzer senden.
 - **Filtermöglichkeiten:** Benutzer können ihre Suchkriterien filtern, um passende Aktivitätenpartner zu finden.
 
-## Collaborateurs
+### Collaborateurs
 
-Hier sind die Links zu den Mitwirkenden welche erwähnt werden wollten:
+Hier sind die Links zu den Mitwirkenden welche erwähnt werden wollten: 
 https://github.com/lelster
+
 ---
 
 ### Instructions for Development
