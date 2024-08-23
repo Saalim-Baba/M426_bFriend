@@ -18,7 +18,7 @@ Unser Auftrag ist es, als Schüler eine Web-Applikation zu entwickeln, die Mensc
 
 ### Ziel des Projektes
 
-In der Pilotphase soll ein Prototyp erstellt werden, um die Machbarkeit des Projektes zu prüfen. Dieser Prototyp dient als Grundlage, um potentielle Kapitalgeber zu überzeugen und eine großangelegte Markteinführungskampagne zu starten.
+In der Pilotphase soll ein Prototyp erstellt werden, um Scrum zu lernen während wir an solch einem Projekt arbeiten
 
 ### Projektorganisation
 
@@ -55,15 +55,10 @@ Einige der wichtigsten User Stories, die wir umsetzen werden:
 - **Nachrichtenfunktion:** Benutzer können Nachrichten an andere Benutzer senden.
 - **Filtermöglichkeiten:** Benutzer können ihre Suchkriterien filtern, um passende Aktivitätenpartner zu finden.
 
+## Collaborateurs
 
-
-
-
-
-
-
-Got it! Let's simplify it further based on your requirements:
-
+Hier sind die Links zu den Mitwirkenden welche erwähnt werden wollten:
+https://github.com/lelster
 ---
 
 ### Instructions for Development
