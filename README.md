@@ -2,7 +2,7 @@
 
 ## Bringing People Together
 
-### Disclaminer
+### Disclaimer
 Dieses Projekt ist für ein Modul an unserem Bildungszentrum, es geht nicht um den Code selber sondern viel mehr darum das wir ein Projekt realisieren welches mit Scrum läuft, somit ist der Code unvollständig und kein vollständiges Projekt. Endnote im Schnitt unseres Teams: 5
 
 ### Ziel des Projektes
