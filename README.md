@@ -2,23 +2,13 @@
 
 ## Bringing People Together
 
-bFriend ist eine innovative Web-Applikation, die Menschen mit gemeinsamen Hobbys und Interessen zusammenbringt. Unser Ziel ist es, eine Plattform zu schaffen, die es Benutzern ermöglicht, einfach und sicher Gleichgesinnte für gemeinsame Aktivitäten zu finden.
-
-### Ausgangslage
-
-In unserer modernen Welt ist Kommunikation das Schlüsselwort schlechthin. Menschen können nahezu ohne Verzögerung miteinander in Verbindung treten. Dennoch gibt es oft keine effizienten Möglichkeiten, um gezielt Personen für spezifische Freizeitaktivitäten zu finden.
-
-### Problemstellung
-
-Viele Social Media-Plattformen bieten allgemeine Interessengruppen, die jedoch oft zu unverbindlich sind. Plattformen wie TINDER sind primär auf romantische Beziehungen ausgelegt und daher für unser Ziel ungeeignet.
-
-### Projektauftrag
-
-Unser Auftrag ist es, als Schüler eine Web-Applikation zu entwickeln, die Menschen mit unterschiedlichsten Hobbys zusammenbringt. Diese Plattform, mit dem Arbeitstitel „bFriend“, soll diese Lücke füllen und eine effiziente Möglichkeit bieten, Hobby-Partner zu finden.
+### Disclaminer
+Dieses Projekt ist für ein Modul an unserem Bildungszentrum, es geht nicht um den Code selber sondern viel mehr darum das wir ein Projekt realisieren welches mit Scrum läuft, somit ist der Code unvollständig und kein vollständiges Projekt. Endnote im Schnitt unseres Teams: 5
 
 ### Ziel des Projektes
 
 In der Pilotphase soll ein Prototyp erstellt werden, um Scrum zu lernen während wir an solch einem Projekt arbeiten
+bFriend ist eine innovative Web-Applikation, die Menschen mit gemeinsamen Hobbys und Interessen zusammenbringt. Eine Plattform zu schaffen, die es Benutzern ermöglicht, einfach und sicher Gleichgesinnte für gemeinsame Aktivitäten zu finden.
 
 ### Projektorganisation
 
