@@ -58,6 +58,7 @@ Einige der wichtigsten User Stories, die wir umsetzen werden:
 ### Collaborateurs
 
 Hier sind die Links zu den Mitwirkenden welche erwähnt werden wollten: 
+
 https://github.com/lelster
 
 ---
@@ -68,7 +69,7 @@ https://github.com/lelster
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Saalim-Baba/M426_bFriend.git
    cd bFriend
    ```
 
